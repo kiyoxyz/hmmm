@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <title>Valentine's Shit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body{
+            font-family: 'Pacifico', cursive;
+            background-color: rgb(255, 223, 239);
+            width: 100%;
+            height: 100%; 
+            overflow-x: hidden;
+        }
+        .bg{
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: url("/kiyo.png"); 
+            background-size: cover;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            z-index: -1;
+            animation: changeBG 3s 4.5s ease forwards;
+           
+        }
+        input[type=button]{
+            border: none;
+            padding: 15px 35px;
+            border-radius: 20px;
+            background-color: rgb(247, 153, 200);
+            font-family:Arial, Helvetica, sans-serif ;
+            cursor: pointer;
+            color: #ffffff;
+            
+        }
+        input[type=button]:hover{
+            box-shadow: 0px 0px 10px rgb(246, 210, 228);
+            text-shadow: 0px 0px 10px white;
+            transition: all 0.5s;
+        }
+        h1{
+            position: relative;
+            display: inline-flex;
+            color: rgb(247, 153, 200);
+            text-shadow: 0px 0px 4px rgb(255, 212, 233);
+        }
+        h1::after,
+        h1::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        h1::before{
+            background-color: rgb(255, 223, 239);
+            animation: type 4.5s ease forwards;
+        }
+        h1::after{
+            background-color: #ffffff;
+            width: 0.2rem;
+            animation: 
+                type 4.5s ease forwards,
+                blink 700ms infinite alternate;
+        }
+        .title{ 
+            font-size: 3vw; 
+            display: flex;
+            align-items: center;
+            flex-direction: column; 
+        }
+        @keyframes blink {
+            to {
+                background: transparent;
+            }
+
+        }
+        @keyframes changeBG {
+            to{
+                opacity: 0.9;
+            }
+            
+        }
+        @keyframes type {
+            to{
+                left: 100%;
+            }
+        }
+    </style>
+    <script defer src="app.js"></script>
+</head>
+<body> 
+    <div class = "bg"></div>
+    <div class="title">
+        <H1>Happy Valentine's Day!</H1>   
+        <input type="button" value="Click Here!" onclick="newpage()">
+        <audio id="audio" autoplay>
+            <source src="Die For You.mp3" type="audio/mp3">
+        </audio>
+    </div>
+</body>
+<script>
+    function newpage(){
+        window.open("/main.html"); 
+        var audio = document.getElementById("audio");
+        // audio.play();
+    }
+</script>
+</html> 
