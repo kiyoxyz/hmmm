@@ -1,58 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Shadows+Into+Light&display=swap"
+        rel="stylesheet">
     <title>Main</title>
     <style>
         @font-face {
-        font-family: bohemian;
-        src:url(Bohemian\ Typewriter.ttf)
+            font-family: bohemian;
+            src: url(Bohemian\ Typewriter.ttf)
         }
-        html{
+
+        html {
+            --bg-color: rgb(255, 223, 239);
             scrollbar-width: 1vw;
             scrollbar-color: rgb(247, 191, 219) rgb(255, 233, 244);
         }
-        html::-webkit-scrollbar{
+
+        html::-webkit-scrollbar {
             width: 1vw;
         }
-        html::-webkit-scrollbar-thumb{
+
+        html::-webkit-scrollbar-thumb {
             background-color: rgb(247, 191, 219);
             border-radius: 20px;
         }
-        html::-webkit-scrollbar-track{
+
+        html::-webkit-scrollbar-track {
             background-color: rgb(249, 209, 229);
             border-radius: 20px;
             margin-block: 20px;
         }
-        body{
-            background-color: rgb(255, 223, 239);
+
+        body {
+            background-color: var(--bg-color);
+            background-image: url(blurry-gradient-haikei.png);
+            background-repeat: no-repeat;
+            background-size: cover;
             width: 100%;
-            height: 100%; 
+            height: 100%;
             overflow-x: hidden;
         }
-        h2{
+
+        h2 {
             margin-top: 0;
             text-shadow: 2px 2px 4px rgb(236, 93, 93);
             animation: flash 1s infinite alternate;
         }
-        h2:hover{
+
+        h2:hover {
             animation: color-rotate 1s infinite alternate;
-            cursor:default;
+            cursor: default;
         }
-        .main{ 
+
+        .main {
             display: grid;
             place-items: center;
             align-items: center;
-            font-size: 3vw; 
+            font-size: 3vw;
             color: white;
-            flex-direction: column; 
+            flex-direction: column;
         }
-        .poem{
+
+        .poem {
             opacity: 0;
             position: relative;
             font-family: bohemian;
@@ -61,92 +76,126 @@
             text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.518);
             filter: blur(10px);
             transform: translateY(100%);
-            animation: fly 2s ease forwards ;
+            animation: fly 2s ease forwards;
         }
-        #mocha{
+
+        #mocha {
             animation: fly 2s ease forwards;
             transform: translateY(100%);
         }
-        .Part2{
+
+        .Part2 {
             display: grid;
             place-items: center;
             align-items: center;
             margin-top: 10vh;
             position: relative;
-            font-size: 2vw;   
+            font-size: 2vw;
         }
-        #moodBoard{
+
+        #moodBoard {
             /* filter: blur(10px);
             transform: translateX(-100%);
             animation: fly 2s ease forwards; */
             width: 50%;
             border-color: rgb(255, 255, 255);
-            border-style:solid;
+            border-style: solid;
             border-radius: 20px;
             transition: all 1s;
             transition-delay: 100ms;
         }
-        #moodBoard:hover{
+
+        #moodBoard:hover {
             box-shadow: 0px 0px 100px rgb(255, 255, 255);
         }
-        #moodText{
-             color: rgb(137, 110, 120); 
-             text-shadow: 2px 2px 4px #57382174;
-             font-family: 'Caveat', cursive;
-             font-size: 3vw;
+
+        #moodText {
+            color: rgb(137, 110, 120);
+            text-shadow: 2px 2px 4px #57382174;
+            font-family: 'Caveat', cursive;
+            font-size: 3vw;
         }
-        .hidden{
+
+        .hidden {
             opacity: 0;
             filter: blur(10px);
             transform: translateX(-100%);
             transition: all 2s;
         }
-        .show{
+
+        .show {
             opacity: 1;
             filter: blur(0);
             transform: translate(0);
         }
-        .Lyrics{
+
+        .Lyrics {
             display: grid;
             place-items: center;
             margin-top: 8vh;
             font-size: 3vw;
             text-align: center;
             text-shadow: 2px 2px 4px #57382174;
-            font-family: "Caveat",cursive;
+            font-family: "Caveat", cursive;
         }
-        #music{
+
+        #music {
             position: absolute;
             right: 10%;
             top: 10%;
         }
-        #music:hover{
+
+        #music:hover {
             cursor: pointer;
         }
-        svg.hidden{
+
+        svg.hidden {
             stroke-dasharray: 2000;
             stroke-dashoffset: -2000;
             transition: all 3s;
             transition-delay: 500ms;
             /* animation: dash 3s 2s forwards; */
         }
-        svg.show{
+
+        svg.show {
             stroke-dashoffset: 0;
         }
-        .heart{
+
+        .heart {
             display: grid;
             place-items: center;
             margin-top: 15vh;
             margin-left: 10vw;
         }
-        .ss{
+
+        .ss {
             display: grid;
             place-items: center;
             margin-top: 10vh;
         }
-        .ss img{
+
+        .ss img {
             width: 90%;
             filter: drop-shadow(0px 0px 5px);
+        }
+
+        #blob {
+            position: absolute;
+            z-index: -1;
+            transform: translate(-15%, -80%);
+        }
+
+        #blobT {
+            position: absolute;
+            z-index: -1;
+            right: 2%;
+            transform: translateY(-80%);
+        }
+        h3{
+            font-size: 3vw;
+            text-align: center;
+            text-shadow: 2px 2px 4px #57382174;
+            font-family: "Caveat", cursive;
         }
         /* @keyframes dash {
             to{
@@ -154,92 +203,208 @@
             }
         } */
         @keyframes flash {
-            to{
+            to {
                 text-shadow: 0px 0px 20px rgb(242, 1, 1);
             }
-            
+
         }
+
         @keyframes fly {
-            to{
+            to {
                 filter: blur(0);
                 opacity: 1;
                 transform: translate(0);
             }
         }
+
         @keyframes color-rotate {
-            from{
-                filter:hue-rotate(0deg);
+            from {
+                filter: hue-rotate(0deg);
             }
-            to{
+
+            to {
                 filter: hue-rotate(360deg);
             }
         }
+
         @media screen and (max-width:746px) {
-            .main,.Lyrics,#moodText{
+
+            .main,
+            .Lyrics,h3,
+            #moodText {
                 font-size: 5vw;
             }
-            .Part2{
+
+            .Part2 {
                 font-size: 4vw;
             }
-            .heart{
+
+            body {
+                background-image: url(blurry-gradient-haikei-mobile.png);
+            }
+
+            .heart {
                 margin: 0;
             }
-            #music{
+
+            #music {
                 right: 2%;
                 top: 5%;
                 width: 15%;
             }
-            #moodBoard{
+
+            #moodBoard {
                 width: 80%;
             }
-            .ss{
+
+            .ss {
                 margin-top: 5vh;
             }
-            svg{
+
+            svg {
                 width: 70%;
             }
         }
     </style>
     <script defer src="app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/kute.js/2.0.0/kute.min.js"></script>
 </head>
+
 <body>
-    <div class = "main">
+    <svg style="position: absolute;z-index: -1;" id="visual" viewBox="0 0 960 540" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+        <g>
+            <g transform="translate(126 344)">
+                <path
+                    d="M67.5 -37.7C81.9 -14 84.2 18 70.9 41C57.7 64.1 28.8 78.2 -1.7 79.2C-32.2 80.2 -64.5 68 -78.5 44.5C-92.5 21.1 -88.3 -13.7 -72.1 -38.4C-56 -63 -28 -77.5 -0.7 -77.1C26.5 -76.7 53.1 -61.3 67.5 -37.7Z"
+                    fill="#ffcef1"></path>
+            </g>
+            <g transform="translate(438 170)">
+                <path
+                    d="M33.3 -20.3C39.3 -8.8 37.6 6 30.8 16.6C24 27.1 12 33.5 -1.2 34.2C-14.3 34.8 -28.7 29.8 -35 19.5C-41.3 9.3 -39.6 -6.3 -32.4 -18.4C-25.2 -30.5 -12.6 -39.2 0.5 -39.5C13.6 -39.8 27.3 -31.7 33.3 -20.3Z"
+                    fill="#ffcef1"></path>
+            </g>
+            <g transform="translate(840 199)">
+                <path
+                    d="M38.4 -22.4C45.8 -9.4 45 8.1 37.3 20.4C29.5 32.7 14.7 39.9 -0.3 40.1C-15.4 40.3 -30.9 33.5 -37.3 22C-43.8 10.4 -41.2 -6 -33.5 -19.1C-25.8 -32.3 -12.9 -42.3 1.3 -43C15.5 -43.8 31 -35.3 38.4 -22.4Z"
+                    fill="#ffcef1"></path>
+            </g>
+            <g transform="translate(427 420)">
+                <path
+                    d="M39.5 -23.5C47.9 -8.4 49 10.3 41.2 25.4C33.4 40.6 16.7 52.2 0 52.2C-16.6 52.1 -33.2 40.4 -42.6 24.4C-52 8.3 -54.3 -12.2 -46 -27.3C-37.7 -42.3 -18.8 -52.1 -1.6 -51.2C15.6 -50.2 31.2 -38.6 39.5 -23.5Z"
+                    fill="#ffcef1"></path>
+            </g>
+            <g transform="translate(703 398)">
+                <path
+                    d="M51.8 -29.6C60.8 -14.2 57.6 8.6 47 26.2C36.3 43.9 18.1 56.3 0.2 56.2C-17.8 56.1 -35.6 43.5 -44.1 27.1C-52.5 10.8 -51.6 -9.2 -42.7 -24.6C-33.8 -40 -16.9 -50.7 2.2 -52C21.3 -53.2 42.7 -45.1 51.8 -29.6Z"
+                    fill="#ffcef1"></path>
+            </g>
+        </g>
+    </svg>
+    <div class="main">
         <h2>❤️❤️❤️❤️❤️</h2>
         <audio id="audio">
             <source src="Pano.mp3" type="audio/mp3">
         </audio>
         <img class="poem" src="/icons8-play-button-circled-96.png" id="music" onclick="play()" alt="play-pause">
-        <p class = 'poem'>I want for all time <br> to fill the spaces between <br> your fingers with mine</p>
-        <img id="mocha" src="https://cdn.discordapp.com/attachments/1073235883806969956/1073275923740237954/mocha.gif" alt="cringe">
+        <p class='poem'>I want for all time <br> to fill the spaces between <br> your fingers with mine</p>
+        <img id="mocha" src="https://cdn.discordapp.com/attachments/1073235883806969956/1073275923740237954/mocha.gif"
+            alt="cringe">
     </div>
-    <section class = "Part2">
+    <section class="Part2">
         <img id="moodBoard" class="hidden" src="/Mood_Board_3000x2000_px.jpeg" alt="Valentine">
         <p id="moodText" class="hidden">Anh Yêu Em</p>
     </section>
+    <svg id="blob" viewBox="0 0 540 960" width="540" height="960" xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+        <g transform="translate(268.5078037274555 493.52759539216413)">
+            <path id="blob1"
+                d="M100.5 -116.8C127 -74 143 -37 156.3 13.3C169.6 63.6 180.3 127.3 153.8 158.1C127.3 188.9 63.6 187 15.9 171.1C-31.8 155.2 -63.6 125.3 -96.5 94.5C-129.3 63.6 -163.2 31.8 -166.8 -3.7C-170.5 -39.1 -143.9 -78.3 -111.1 -121.1C-78.3 -163.9 -39.1 -210.5 -1.1 -209.4C37 -208.3 74 -159.7 100.5 -116.8"
+                fill="#ffcef1"></path>
+        </g>
+        <g transform="translate(267.31492683714686 479.0935025445627)">
+            <path id="blob2" style="visibility: hidden;"
+                d="M158.4 -159.8C189.6 -127.3 188.3 -63.6 176.6 -11.7C165 40.3 142.9 80.6 111.8 115.9C80.6 151.3 40.3 181.6 -6.5 188.1C-53.3 194.6 -106.5 177.2 -139.7 141.9C-172.9 106.5 -185.9 53.3 -175.2 10.7C-164.5 -31.8 -130 -63.6 -96.8 -96.1C-63.6 -128.6 -31.8 -161.8 15.9 -177.7C63.6 -193.6 127.3 -192.3 158.4 -159.8"
+                fill="#ffcef1"></path>
+        </g>
+    </svg>
     <section class="Lyrics">
         <p class="hidden">Even though we're goin' through it
             <br> And it makes you feel alone
             <br> Just know that I would die for you
-            <br> Baby, I would die for you, yeah</p>
+            <br> Baby, I would die for you, yeah
+        </p>
     </section>
+    <svg id="blobT" viewBox="0 0 500 500" width="500" height="500" xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+        <g transform="translate(279.1834348548417 244.8949669241486)">
+            <path id="blob3"
+                d="M83.6 -83.1C108.3 -58.9 128.1 -29.5 138 9.9C147.9 49.3 147.9 98.5 123.2 122.7C98.5 146.9 49.3 145.9 8.8 137.1C-31.6 128.3 -63.2 111.5 -104.8 87.3C-146.5 63.2 -198.3 31.6 -202.3 -4C-206.3 -39.6 -162.5 -79.2 -120.9 -103.4C-79.2 -127.5 -39.6 -136.3 -5.1 -131.2C29.5 -126.1 58.9 -107.3 83.6 -83.1"
+                fill="#ffcef1"></path>
+        </g>
+        <g transform="translate(228.59200993956682 234.82088085945423)">
+            <path id="blob4" style="visibility: hidden;"
+                d="M149.5 -146.3C183.5 -115.5 193.7 -57.7 185.5 -8.2C177.2 41.2 150.5 82.5 116.5 124.2C82.5 165.8 41.2 207.9 2.9 205C-35.4 202 -70.7 154 -98.9 112.4C-127 70.7 -148 35.4 -145.1 2.9C-142.1 -29.5 -115.3 -58.9 -87.1 -89.8C-58.9 -120.6 -29.5 -152.8 14.1 -166.9C57.7 -181.1 115.5 -177.2 149.5 -146.3"
+                fill="#ffcef1"></path>
+        </g>
+    </svg>
     <section class="heart">
-        <svg class="hidden" width="630" height="422" viewBox="0 0 630 422" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="hidden" width="630" height="422" viewBox="0 0 630 422" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
             <g style="mix-blend-mode:darken">
-            <path d="M105 2.99998C63.0001 -6.00002 -26.9998 53 11.0001 115C48.0001 177 197 325 197 325C197 325 380 156 393 101C406 45.9999 378 2.99998 305 2.99998C232 2.99998 197 70 197 70C197 70 147 12 105 2.99998Z" stroke="black" stroke-width="3"/>
+                <path
+                    d="M105 2.99998C63.0001 -6.00002 -26.9998 53 11.0001 115C48.0001 177 197 325 197 325C197 325 380 156 393 101C406 45.9999 378 2.99998 305 2.99998C232 2.99998 197 70 197 70C197 70 147 12 105 2.99998Z"
+                    stroke="black" stroke-width="3" />
             </g>
-            <path d="M194 390C207.907 380.347 222.615 371.786 237.333 363.444C244.811 359.207 248.92 356.968 256.111 353.556C257.308 352.987 260.972 352.003 259.667 351.778C254.918 350.959 250.006 351.756 245.222 352.333C229.615 354.215 215.928 356.942 200.889 362.222C184.207 368.079 170.156 375.347 155.222 384.556C148.495 388.704 135.829 396.18 130.667 403.278C129.249 405.227 135.13 401.372 137.111 400C147.842 392.566 158.184 384.582 168.889 377.111C193.822 359.71 219.567 344.074 246.444 329.889C253.24 326.302 261.48 322.51 248.167 327.278C227.784 334.577 206.688 343.363 189.333 356.556C185.775 359.26 176.504 366.36 176.222 372C175.891 378.623 190.47 370.252 190.667 370.111C198.983 364.157 204.956 355.468 209.667 346.556C210.544 344.897 217.202 333.87 213.778 332.5C205.838 329.324 188.052 335.161 182.833 342.278C181.72 343.797 188.975 337.693 189 337.667C193.121 333.251 195.661 328.457 198 323" stroke="black" stroke-width="3" stroke-linecap="round"/>
-            <path d="M330 318C330 333.776 330.687 349.095 333.444 364.667C333.824 366.808 333.492 382.274 336.167 383.444C344.927 387.277 355.992 378.18 362 373.333C370.831 366.21 379.369 357.42 384 347" stroke="black" stroke-width="3" stroke-linecap="round"/>
-            <path d="M383 318C381.048 322.937 367 354.611 379 355.944C382.194 356.299 387.264 356.751 390.222 355.556C393.211 354.347 396.099 351.882 395.833 348.5C395.42 343.239 393.535 335.702 392.056 331.056C391.038 327.86 390.122 324.57 388.444 321.667C376.975 301.809 391.334 329.435 381 320" stroke="black" stroke-width="3" stroke-linecap="round"/>
-            <path d="M390 308C395.568 313.846 401.902 318.492 407.778 324C408.949 325.098 416.438 336.361 418.556 334.667C424.962 329.542 424.783 311.75 425.778 304.444C426.574 298.592 427 292.883 427 287" stroke="black" stroke-width="3" stroke-linecap="round"/>
-            <path d="M452 303C456.818 291.882 466.761 274.176 463.944 261.5C463.029 257.378 449.098 260.902 447 263C440.125 269.875 443 285 443 294C443 301.018 449.382 303 455.778 303C458.389 303 461 303 463.611 303C475.861 303 482.46 286.158 485 276" stroke="black" stroke-width="3" stroke-linecap="round"/>
-            <path d="M465 216C470.024 217.906 508.557 239.108 511.056 234.111C514.737 226.748 513.956 215.885 514 207.889C514.039 200.788 512.746 194.035 512.222 187C511.975 183.675 512.861 173.794 511.944 177C509.25 186.43 509.68 197.6 509 207.222C505.874 251.427 508.06 294.876 512 339" stroke="black" stroke-width="3" stroke-linecap="round"/>
-            <path d="M536 225C531.961 236.219 532 247.623 532 259.389C532 260.456 530.952 269.9 532.444 270.778C538.603 274.4 548.07 269.37 550.556 263.778C553.685 256.736 554 249.205 554 241.667C554 239.929 554.957 234.484 553.556 233C549.236 228.426 540.155 231.23 536 234" stroke="black" stroke-width="3" stroke-linecap="round"/>
-            <path d="M544 207C552.657 217.388 555.706 229.478 561 241.389C562.597 244.983 568.478 236.644 568.667 236.333C573.957 227.613 576.853 218.146 575.833 207.944C575.328 202.893 571 188.66 571 201C571 214.407 577.345 224.737 584 236" stroke="black" stroke-width="3" stroke-linecap="round"/>
-            <path d="M422 383C432.516 376.621 514.124 327.084 531.111 316.889C538.948 312.185 546.776 307.461 554.722 302.944C557.336 301.459 559.808 299.353 562.778 298.889C566.218 298.351 560.247 305.401 558.556 308.444C553.818 316.968 547.11 327.532 541.889 335.444C523.063 363.976 503.203 392.173 483.222 419.889C482.008 421.574 482.206 415.628 482.889 413.667C488.657 397.106 504.475 382.646 515.667 369.889C533.015 350.114 551.009 331.831 571.444 315.222C589.761 300.336 608.919 286.834 628 273" stroke="black" stroke-width="3" stroke-linecap="round"/>
-            </svg>
+            <path
+                d="M194 390C207.907 380.347 222.615 371.786 237.333 363.444C244.811 359.207 248.92 356.968 256.111 353.556C257.308 352.987 260.972 352.003 259.667 351.778C254.918 350.959 250.006 351.756 245.222 352.333C229.615 354.215 215.928 356.942 200.889 362.222C184.207 368.079 170.156 375.347 155.222 384.556C148.495 388.704 135.829 396.18 130.667 403.278C129.249 405.227 135.13 401.372 137.111 400C147.842 392.566 158.184 384.582 168.889 377.111C193.822 359.71 219.567 344.074 246.444 329.889C253.24 326.302 261.48 322.51 248.167 327.278C227.784 334.577 206.688 343.363 189.333 356.556C185.775 359.26 176.504 366.36 176.222 372C175.891 378.623 190.47 370.252 190.667 370.111C198.983 364.157 204.956 355.468 209.667 346.556C210.544 344.897 217.202 333.87 213.778 332.5C205.838 329.324 188.052 335.161 182.833 342.278C181.72 343.797 188.975 337.693 189 337.667C193.121 333.251 195.661 328.457 198 323"
+                stroke="black" stroke-width="3" stroke-linecap="round" />
+            <path
+                d="M330 318C330 333.776 330.687 349.095 333.444 364.667C333.824 366.808 333.492 382.274 336.167 383.444C344.927 387.277 355.992 378.18 362 373.333C370.831 366.21 379.369 357.42 384 347"
+                stroke="black" stroke-width="3" stroke-linecap="round" />
+            <path
+                d="M383 318C381.048 322.937 367 354.611 379 355.944C382.194 356.299 387.264 356.751 390.222 355.556C393.211 354.347 396.099 351.882 395.833 348.5C395.42 343.239 393.535 335.702 392.056 331.056C391.038 327.86 390.122 324.57 388.444 321.667C376.975 301.809 391.334 329.435 381 320"
+                stroke="black" stroke-width="3" stroke-linecap="round" />
+            <path
+                d="M390 308C395.568 313.846 401.902 318.492 407.778 324C408.949 325.098 416.438 336.361 418.556 334.667C424.962 329.542 424.783 311.75 425.778 304.444C426.574 298.592 427 292.883 427 287"
+                stroke="black" stroke-width="3" stroke-linecap="round" />
+            <path
+                d="M452 303C456.818 291.882 466.761 274.176 463.944 261.5C463.029 257.378 449.098 260.902 447 263C440.125 269.875 443 285 443 294C443 301.018 449.382 303 455.778 303C458.389 303 461 303 463.611 303C475.861 303 482.46 286.158 485 276"
+                stroke="black" stroke-width="3" stroke-linecap="round" />
+            <path
+                d="M465 216C470.024 217.906 508.557 239.108 511.056 234.111C514.737 226.748 513.956 215.885 514 207.889C514.039 200.788 512.746 194.035 512.222 187C511.975 183.675 512.861 173.794 511.944 177C509.25 186.43 509.68 197.6 509 207.222C505.874 251.427 508.06 294.876 512 339"
+                stroke="black" stroke-width="3" stroke-linecap="round" />
+            <path
+                d="M536 225C531.961 236.219 532 247.623 532 259.389C532 260.456 530.952 269.9 532.444 270.778C538.603 274.4 548.07 269.37 550.556 263.778C553.685 256.736 554 249.205 554 241.667C554 239.929 554.957 234.484 553.556 233C549.236 228.426 540.155 231.23 536 234"
+                stroke="black" stroke-width="3" stroke-linecap="round" />
+            <path
+                d="M544 207C552.657 217.388 555.706 229.478 561 241.389C562.597 244.983 568.478 236.644 568.667 236.333C573.957 227.613 576.853 218.146 575.833 207.944C575.328 202.893 571 188.66 571 201C571 214.407 577.345 224.737 584 236"
+                stroke="black" stroke-width="3" stroke-linecap="round" />
+            <path
+                d="M422 383C432.516 376.621 514.124 327.084 531.111 316.889C538.948 312.185 546.776 307.461 554.722 302.944C557.336 301.459 559.808 299.353 562.778 298.889C566.218 298.351 560.247 305.401 558.556 308.444C553.818 316.968 547.11 327.532 541.889 335.444C523.063 363.976 503.203 392.173 483.222 419.889C482.008 421.574 482.206 415.628 482.889 413.667C488.657 397.106 504.475 382.646 515.667 369.889C533.015 350.114 551.009 331.831 571.444 315.222C589.761 300.336 608.919 286.834 628 273"
+                stroke="black" stroke-width="3" stroke-linecap="round" />
+        </svg>
     </section>
     <section class="ss">
+        <h3>Hoping to make more memories like these 💜</h3>
         <img src="ss.png" alt="somethingVeryCute">
     </section>
 </body>
+<script>
+    const tween = KUTE.fromTo(
+        '#blob1',
+        { path: "#blob1" },
+        { path: "#blob2" },
+        { repeat: 999, duration: 3000, yoyo: true }
+    )
+    const tween2 = KUTE.fromTo(
+        '#blob3',
+        { path: "#blob3" },
+        { path: "#blob4" },
+        { repeat: 999, duration: 3000, yoyo: true }
+    )
+    tween.start()
+    tween2.start()
+</script>
+
 </html>
